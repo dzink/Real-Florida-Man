@@ -1,5 +1,6 @@
 {
     "name": "Real Florida Man",
+    "short_name": "Real Florida Man",
     "version": "1.0",
     "description": "Switches 'Donald Trump' and 'Florida Man' in headlines/Twitter/other things? Life's an adventure. Based on idea by @DAZZLESTORM",
     "content_scripts": [
@@ -12,6 +13,10 @@
         ],
         "run_at": "document_end"
       }
+    ],
+    "options_page": "options.html",
+    "permissions": [
+      "storage"
     ],
     "manifest_version": 2
   }
