@@ -1,37 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head><title>Real Florida Man Options</title></head>
+<head>
+  <title>Real Florida Man Options</title>
+  <script src='third-party/jquery-2.2.2.min.js'></script>
+  <style>
+    body {
+      line-height: 1.4em;
+      width: 24em;
+    }
+    #title {
+      padding: 0 0 1em 0;
+    }
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .disabled {
+      opacity: 0.4;
+      filter:alpha(opacity=40);
+    }
+    .nonaggressive {
+      padding-left: 1em;
+    }
+    .options-set, #about {
+      padding: 1em;
+      border-top: 1px solid rgba(128, 128, 128, 0.5);
+    }
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+    #status {
+      font-size: 0.75em;
+      color: #393;
+      text-align: center;
+      display: none;
+      line-height: 1em;
+    }
+  </style>
+</head>
 <body>
+  <div id='title'>
+    <h1>
+      Real Florida Man
+    </h1>
+    Replaces a reviled failed businessman with a beloved mischevious scamp in text.
+  </div>
+  <div id='options-aggressive' class='options-set'>
+    <div>
+      <label>
+        <input type='checkbox' id='aggressive'>
+        Always replace Florida/Trump.
+      </label>
+    </div>
+    <div class='nonaggressive'>
+      <label>
+        <input type='checkbox' id='headlines'>
+        Replace h1 headlines.
+      </label>
+    </div>
+    <div class='nonaggressive'>
+      <label>
+        <input type='checkbox' id='links'>
+        Replace in bolded text and links.
+      </label>
+    </div>
+  </div>
+  <div id='options-behavior' class='options-set'>
+    Additional behavior
+    <div>
+      <label>
+        <input type='checkbox' id='twitter'>
+        Reverse Twitter handles
+      </label>
+    </div>
+  </div>
+  <div id='about'>
+    You probably shouldn't be using this extension. Based on a <a href="https://twitter.com/DAZZLESTORM/status/1044675873247580160" target='_blank'>joke</a> by <a href='https://twitter.com/DAZZLESTORM' target='_blank'>Ellen Degenerate @dazzlestorm</a>. See it on <a href='https://github.com/dzink/Real-Florida-Man' target='_blank'>Github</a>.
+  </div>
+  <div id='status'>
+    <div id='saved'>Options Saved</div>
+    Refresh to see changes</a>.
+  </div>
 
-How Florida? How Trump?
-<div>
-  <label>
-    <input type="checkbox" id="aggressive">
-    Always replace Florida/Trump.
-  </label>
-<div>
-</div>
-  <label>
-    <input type="checkbox" id="headlines">
-    Replace Florida/Trump in h1 headlines.
-  </label>
-<div>
-</div>
-  <label>
-    <input type="checkbox" id="links">
-    Replace Florida/Trump in other potential headlines and links.
-  </label>
-<div>
-</div>
-  <label>
-    <input type="checkbox" id="twitter">
-    Replace Trump's twitter handle with @_FloridaMan.
-  </label>
-</div>
-
-<div id="status"></div>
-<button id="save">Save</button>
-
-<script src="options.js"></script>
+  <script src='options.js'></script>
 </body>
 </html>

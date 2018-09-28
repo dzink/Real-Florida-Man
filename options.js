@@ -1,6 +1,5 @@
 // Saves options to chrome.storage
-function save_options() {
-
+function saveSettings() {
   var aggressive = document.getElementById('aggressive').checked;
   var headlines = document.getElementById('headlines').checked;
   var links = document.getElementById('links').checked;
@@ -12,19 +11,13 @@ function save_options() {
     links: links,
     twitter: twitter,
   }, function() {
-    // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
-    setTimeout(function() {
-      status.textContent = '';
-    }, 750);
+    $('#status').slideDown();
+    $('#saved').clearQueue().slideDown().delay(750).slideUp();
   });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-  // Use default value color = 'red' and likesColor = true.
+
+function restoreSettings() {
   chrome.storage.sync.get({
     aggressive: false,
     headlines: true,
@@ -37,6 +30,25 @@ function restore_options() {
     document.getElementById('twitter').checked = items.twitter;
   });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+
+function initializeForm() {
+  restoreSettings();
+  setTimeout(decorateForm, 500);
+}
+
+function decorateForm() {
+  if ($('#aggressive').prop('checked')) {
+    $('.nonaggressive input').attr('disabled', 'disabled');
+    $('.nonaggressive').addClass('disabled');
+  }
+  else {
+    $('.nonaggressive input').removeAttr('disabled', '');
+    $('.nonaggressive').removeClass('disabled');
+  }
+}
+document.addEventListener('DOMContentLoaded', initializeForm);
+
+$('#aggressive, #headlines, #links, #twitter').change(function() {
+  saveSettings();
+  decorateForm();
+});
