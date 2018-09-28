@@ -1,5 +1,3 @@
-var types = ['H1', 'A', 'STRONG', 'SPAN', 'B'];
-
 chrome.storage.sync.get({
   aggressive: false,
   headlines: true,
@@ -20,7 +18,6 @@ chrome.storage.sync.get({
     }
   }
   if (places.length) {
-    console.log(places);
     replaceInTypes(places, replaceNames);
   }
 
